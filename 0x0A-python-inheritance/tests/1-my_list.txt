@@ -1,5 +1,5 @@
 # 1-my_list.txt
-# Brennan D Baraban <ndouishmael@gmail.com>
+# Rotondwa Ishmael Ndou <ndouishmael@gmail.com>
 
 =======================
 How to Use 1-my_list.py
