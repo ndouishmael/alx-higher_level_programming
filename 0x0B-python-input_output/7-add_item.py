@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # 7-add_item.py
-# Brennan D Baraban <ndouishmael@gmail.com>
+# Rotondwa Ishmael Ndou <ndouishmael@gmail.com>
 """Add all arguments to a Python list and save them to a file."""
 import sys
 
