@@ -4,28 +4,31 @@
 
 const request = require('request');
 
-const options = {
-  url: process.argv[2],
-  headers: {
-    'User-Agent': 'request'
-  }
-};
+const apiUrl = process.argv[2];
 
-function callback (error, response, body) {
-  if (!error && response.statusCode === 200) {
-    const data = JSON.parse(body);
-    let results = {};
-    let i = 0;
-    for (i = 0; i < data.length; i++) {
-      if (!(data[i]['userId'] in results) && data[i]['completed']) {
-        results[data[i]['userId']] = 0;
-      }
-      if (data[i]['completed']) {
-        results[data[i]['userId']] += 1;
-      }
-    }
-    console.log(results);
-  }
+request(apiUrl, function (error, response, body) {
+if (error) {
+console.error(error);
+return;
 }
 
-request(options, callback);
+if (response.statusCode !== 200) {
+console.error('Invalid status code:', response.statusCode);
+return;
+}
+
+const todos = JSON.parse(body);
+
+const users = {};
+
+for (const todo of todos) {
+if (todo.completed) {
+const userId = todo.userId;
+users[userId] = (users[userId] || 0) + 1;
+}
+}
+
+for (const userId in users) {
+console.log(${userId}: ${users[userId]} tasks completed);
+}
+});
