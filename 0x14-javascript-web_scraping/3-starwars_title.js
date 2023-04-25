@@ -1,10 +1,13 @@
 #!/usr/bin/node
 
-let request = require('request');
-let episode = process.argv[2];
-let url = 'http://swapi.co/api/films/' + episode;
+const request = require('request');
+const movieId = process.argv[2];
 
-request(url, function (err, data, body) {
-  if (err) throw err;
-  console.log(JSON.parse(body)['title']);
+request(https://swapi-api.alx-tools.com/api/films/${movieId}, function (error, response, body) {
+if (!error && response.statusCode === 200) {
+const movie = JSON.parse(body);
+console.log(movie.title);
+} else {
+console.log(Error: ${response.statusCode});
+}
 });
